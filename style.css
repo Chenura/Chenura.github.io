@@ -6,50 +6,26 @@
 
 body {
     height: 100vh;
-    font-family: "Courier New", monospace;
-    background: #050a0f;
+    background: #0a0f14;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #00ffcc;
-    overflow: hidden;
-}
-
-/* Cyber animated background */
-.cyber-bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        linear-gradient(90deg, rgba(0,255,204,0.05) 1px, transparent 1px),
-        linear-gradient(rgba(0,255,204,0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
-    animation: scan 8s linear infinite;
-    z-index: -1;
-}
-
-@keyframes scan {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 40px 40px;
-    }
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .profile-card {
-    background: rgba(5, 15, 25, 0.9);
-    border: 1px solid #00ffcc;
-    width: 340px;
+    background: #111827;
+    color: #ffffff;
+    width: 320px;
     padding: 30px;
     text-align: center;
     border-radius: 12px;
-    box-shadow: 0 0 25px rgba(0, 255, 204, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
 .profile-img {
-    width: 160px;
-    height: 160px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
     border-radius: 50%;
     border: 4px solid #00ffcc;
@@ -59,12 +35,11 @@ body {
 .profile-card h1 {
     font-size: 22px;
     margin-bottom: 8px;
-    text-shadow: 0 0 10px #00ffcc;
 }
 
 .age {
     font-size: 14px;
-    color: #8affea;
+    color: #b0b0b0;
     margin-bottom: 12px;
 }
 
@@ -72,5 +47,4 @@ body {
     font-size: 15px;
     font-weight: bold;
     color: #00ffcc;
-    letter-spacing: 0.5px;
 }
