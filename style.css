@@ -1,0 +1,104 @@
+/* Custom Cyber-Dark Theme */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #0d1117;
+    background-image: radial-gradient(circle at 50% 50%, #161b22 0%, #0d1117 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #c9d1d9;
+}
+
+.profile-card {
+    background: #161b22;
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid #30363d;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 350px;
+    width: 90%;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.profile-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #58a6ff;
+    box-shadow: 0 0 15px rgba(88, 166, 255, 0.3);
+}
+
+.badge {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: #238636;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #161b22;
+}
+
+h1 {
+    color: #f0f6fc;
+    font-size: 1.6rem;
+    margin: 10px 0;
+}
+
+.age {
+    color: #8b949e;
+    font-size: 0.95rem;
+    margin: 0 0 15px 0;
+}
+
+.highlight {
+    color: #58a6ff;
+    font-weight: 600;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #30363d;
+    margin: 20px 0;
+}
+
+.tool-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #8b949e;
+}
+
+.social-links {
+    margin-top: 30px;
+}
+
+.social-links a {
+    text-decoration: none;
+    color: #f0f6fc;
+    background: #21262d;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+    transition: 0.2s;
+}
+
+.social-links a:hover {
+    background: #30363d;
+    border-color: #8b949e;
+}
