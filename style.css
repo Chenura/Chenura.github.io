@@ -1,22 +1,31 @@
 body {
-    background-color: #050505; /* Deep dark background */
+    background-color: #000;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Courier New', Courier, monospace;
     overflow: hidden;
 }
 
+#matrix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Puts the rain behind your card */
+}
+
 .cyber-container {
-    background: linear-gradient(145deg, #0d0d0d, #1a1a1a);
+    background: rgba(10, 10, 10, 0.9); /* Semi-transparent black */
     padding: 40px;
-    border-radius: 20px;
-    border: 2px solid #00f2ff;
-    box-shadow: 0 0 20px #00f2ff, inset 0 0 10px #00f2ff;
+    border-radius: 15px;
+    border: 1px solid #00f2ff;
+    box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
     text-align: center;
-    max-width: 350px;
+    backdrop-filter: blur(5px); /* Blurs the rain slightly behind the card */
 }
 
 .img-border {
@@ -24,9 +33,8 @@ body {
     height: 150px;
     margin: 0 auto 20px;
     border-radius: 50%;
-    padding: 5px;
+    padding: 4px;
     background: linear-gradient(45deg, #00f2ff, #ff00ea);
-    box-shadow: 0 0 15px #ff00ea;
 }
 
 .profile-pic {
@@ -34,81 +42,31 @@ body {
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #000;
 }
 
-/* Glitch Effect for the Name */
 .glitch {
-    font-size: 24px;
-    color: #fff;
+    font-size: 26px;
+    color: #00f2ff;
     position: relative;
-    text-transform: uppercase;
+    text-shadow: 0 0 10px #00f2ff;
 }
 
-.glitch::before, .glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-}
+.highlight { color: #ff00ea; text-shadow: 0 0 10px #ff00ea; }
 
-.glitch::before {
-    left: 2px;
-    text-shadow: -2px 0 #ff00ea;
-    clip: rect(44px, 450px, 56px, 0);
-    animation: glitch-anim 5s infinite linear alternate-reverse;
-}
-
-.glitch::after {
-    left: -2px;
-    text-shadow: -2px 0 #00f2ff;
-    clip: rect(44px, 450px, 56px, 0);
-    animation: glitch-anim2 5s infinite linear alternate-reverse;
-}
-
-@keyframes glitch-anim {
-    0% { clip: rect(10px, 9999px, 20px, 0); }
-    100% { clip: rect(80px, 9999px, 90px, 0); }
-}
-
-@keyframes glitch-anim2 {
-    0% { clip: rect(50px, 9999px, 60px, 0); }
-    100% { clip: rect(10px, 9999px, 30px, 0); }
-}
-
-.age-tag { color: #888; font-size: 14px; margin: 5px 0; }
-.description { color: #ccc; }
-.highlight { color: #00f2ff; font-weight: bold; text-shadow: 0 0 5px #00f2ff; }
-
-/* Buttons */
-.links { margin-top: 30px; display: flex; flex-direction: column; gap: 10px; }
+.links { margin-top: 25px; display: flex; flex-direction: column; gap: 15px; }
 
 .btn {
     text-decoration: none;
-    padding: 12px;
-    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid;
     font-weight: bold;
-    transition: 0.3s;
-    border: 1px solid transparent;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.4s;
 }
 
-.linkedin {
-    color: #00f2ff;
-    border-color: #00f2ff;
-}
+.linkedin { color: #00f2ff; border-color: #00f2ff; }
+.linkedin:hover { background: #00f2ff; color: #000; box-shadow: 0 0 20px #00f2ff; }
 
-.linkedin:hover {
-    background: #00f2ff;
-    color: #000;
-    box-shadow: 0 0 20px #00f2ff;
-}
-
-.youtube {
-    color: #ff00ea;
-    border-color: #ff00ea;
-}
-
-.youtube:hover {
-    background: #ff00ea;
-    color: #000;
-    box-shadow: 0 0 20px #ff00ea;
-}
+.youtube { color: #ff00ea; border-color: #ff00ea; }
+.youtube:hover { background: #ff00ea; color: #000; box-shadow: 0 0 20px #ff00ea; }
