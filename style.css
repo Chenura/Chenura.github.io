@@ -1,38 +1,48 @@
 body {
-    background-color: #0a0a0a;
-    color: #00ffc3;
-    font-family: 'Courier New', Courier, monospace;
+    background-color: #050505; /* Deep dark background */
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
 }
 
-.card {
-    background: #121212;
-    padding: 2rem;
-    border: 2px solid #00ffc3;
-    box-shadow: 0 0 15px #00ffc3;
+.cyber-container {
+    background: linear-gradient(145deg, #0d0d0d, #1a1a1a);
+    padding: 40px;
+    border-radius: 20px;
+    border: 2px solid #00f2ff;
+    box-shadow: 0 0 20px #00f2ff, inset 0 0 10px #00f2ff;
     text-align: center;
-    border-radius: 10px;
+    max-width: 350px;
 }
 
-.profile-img {
+.img-border {
     width: 150px;
     height: 150px;
+    margin: 0 auto 20px;
     border-radius: 50%;
-    border: 3px solid #ff0055;
-    object-fit: cover;
+    padding: 5px;
+    background: linear-gradient(45deg, #00f2ff, #ff00ea);
+    box-shadow: 0 0 15px #ff00ea;
 }
 
-/* Glitch Effect */
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #000;
+}
+
+/* Glitch Effect for the Name */
 .glitch {
-    font-size: 2rem;
-    font-weight: bold;
-    text-transform: uppercase;
+    font-size: 24px;
+    color: #fff;
     position: relative;
-    color: #00ffc3;
+    text-transform: uppercase;
 }
 
 .glitch::before, .glitch::after {
@@ -43,30 +53,62 @@ body {
 
 .glitch::before {
     left: 2px;
-    text-shadow: -2px 0 #ff0055;
-    animation: glitch-anim 2s infinite linear alternate-reverse;
+    text-shadow: -2px 0 #ff00ea;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 #00f2ff;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
 }
 
 @keyframes glitch-anim {
-    0% { clip-path: inset(10% 0 30% 0); }
-    20% { clip-path: inset(40% 0 10% 0); }
-    40% { clip-path: inset(15% 0 55% 0); }
-    100% { clip-path: inset(80% 0 5% 0); }
+    0% { clip: rect(10px, 9999px, 20px, 0); }
+    100% { clip: rect(80px, 9999px, 90px, 0); }
 }
+
+@keyframes glitch-anim2 {
+    0% { clip: rect(50px, 9999px, 60px, 0); }
+    100% { clip: rect(10px, 9999px, 30px, 0); }
+}
+
+.age-tag { color: #888; font-size: 14px; margin: 5px 0; }
+.description { color: #ccc; }
+.highlight { color: #00f2ff; font-weight: bold; text-shadow: 0 0 5px #00f2ff; }
+
+/* Buttons */
+.links { margin-top: 30px; display: flex; flex-direction: column; gap: 10px; }
 
 .btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: transparent;
-    color: #ff0055;
-    border: 1px solid #ff0055;
     text-decoration: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-weight: bold;
     transition: 0.3s;
+    border: 1px solid transparent;
 }
 
-.btn:hover {
-    background: #ff0055;
-    color: white;
-    box-shadow: 0 0 20px #ff0055;
+.linkedin {
+    color: #00f2ff;
+    border-color: #00f2ff;
+}
+
+.linkedin:hover {
+    background: #00f2ff;
+    color: #000;
+    box-shadow: 0 0 20px #00f2ff;
+}
+
+.youtube {
+    color: #ff00ea;
+    border-color: #ff00ea;
+}
+
+.youtube:hover {
+    background: #ff00ea;
+    color: #000;
+    box-shadow: 0 0 20px #ff00ea;
 }
