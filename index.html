@@ -4,20 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chenura Gajanayake | Profile</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS Styling - The "Cyber" Theme */
+        body {
+            background-color: #0a0a0a; /* Dark background */
+            color: #00ff41; /* Matrix/Cyber green */
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            /* Simple cyber grid effect */
+            background-image: linear-gradient(0deg, transparent 24%, rgba(0, 255, 65, .05) 25%, rgba(0, 255, 65, .05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 65, .05) 75%, rgba(0, 255, 65, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 255, 65, .05) 25%, rgba(0, 255, 65, .05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 65, .05) 75%, rgba(0, 255, 65, .05) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+        }
+
+        .card {
+            background: rgba(20, 20, 20, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #00ff41;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #00ff41;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        h1 { margin: 10px 0; font-size: 1.5rem; text-transform: uppercase; }
+        p { color: #888; margin-bottom: 20px; }
+        .highlight { color: #00ff41; font-weight: bold; }
+
+        .btn-container { display: flex; flex-direction: column; gap: 10px; }
+
+        .btn {
+            text-decoration: none;
+            padding: 10px;
+            border: 1px solid #00ff41;
+            color: #00ff41;
+            transition: 0.3s;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background: #00ff41;
+            color: #000;
+            box-shadow: 0 0 15px #00ff41;
+        }
+    </style>
 </head>
 <body>
+
     <div class="card">
-        <img src="https://via.placeholder.com/150" alt="Profile Photo" class="profile-img">
+        <img src="profile.jpg" alt="Chenura" class="profile-img">
         
         <h1>Chenura Gajanayake</h1>
-        <p class="age">Age: 23</p>
-        <p class="bio">Passionate about <span>Cyber Security</span></p>
+        <p>Age: <span class="highlight">23</span></p>
+        <p>Status: <span class="highlight">Passionate about Cyber Security</span></p>
 
-        <div class="links">
-            <a href="https://www.linkedin.com/in/chenura-gajanayake-159a56395?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="btn linkedin">LinkedIn</a>
-            <a href="https://youtube.com/@shadowbeast8177?si=uUmjTkn_x0F7dMWb" target="_blank" class="btn youtube">YouTube</a>
+        <div class="btn-container">
+            <a href="https://www.linkedin.com/in/chenura-gajanayake-159a56395?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="btn">LinkedIn</a>
+            <a href="https://youtube.com/@shadowbeast8177?si=uUmjTkn_x0F7dMWb" target="_blank" class="btn">YouTube</a>
         </div>
     </div>
+
 </body>
 </html>
