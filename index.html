@@ -1,81 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chenura Gajanayake | Profile</title>
-    <style>
-        /* CSS Styling - The "Cyber" Theme */
-        body {
-            background-color: #0a0a0a; /* Dark background */
-            color: #00ff41; /* Matrix/Cyber green */
-            font-family: 'Courier New', Courier, monospace;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            /* Simple cyber grid effect */
-            background-image: linear-gradient(0deg, transparent 24%, rgba(0, 255, 65, .05) 25%, rgba(0, 255, 65, .05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 65, .05) 75%, rgba(0, 255, 65, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 255, 65, .05) 25%, rgba(0, 255, 65, .05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 65, .05) 75%, rgba(0, 255, 65, .05) 76%, transparent 77%, transparent);
-            background-size: 50px 50px;
-        }
+<meta charset="UTF-8">
+<title>Chenura Gajanayake</title>
 
-        .card {
-            background: rgba(20, 20, 20, 0.9);
-            padding: 30px;
-            border-radius: 15px;
-            border: 2px solid #00ff41;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
-            text-align: center;
-            width: 300px;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 3px solid #00ff41;
-            object-fit: cover;
-            margin-bottom: 15px;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Share Tech Mono', monospace;
+}
 
-        h1 { margin: 10px 0; font-size: 1.5rem; text-transform: uppercase; }
-        p { color: #888; margin-bottom: 20px; }
-        .highlight { color: #00ff41; font-weight: bold; }
+body{
+    background:black;
+    color:#00ffcc;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
 
-        .btn-container { display: flex; flex-direction: column; gap: 10px; }
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+}
 
-        .btn {
-            text-decoration: none;
-            padding: 10px;
-            border: 1px solid #00ff41;
-            color: #00ff41;
-            transition: 0.3s;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
+.card{
+    background:rgba(0,0,0,0.85);
+    border:1px solid #00ffcc;
+    border-radius:12px;
+    padding:30px;
+    width:320px;
+    text-align:center;
+    box-shadow:0 0 25px #00ffcc;
+}
 
-        .btn:hover {
-            background: #00ff41;
-            color: #000;
-            box-shadow: 0 0 15px #00ff41;
-        }
-    </style>
+.card img{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    border:3px solid #00ffcc;
+    object-fit:cover;
+    margin-bottom:20px;
+}
+
+/* GLITCH EFFECT */
+.glitch{
+    font-size:24px;
+    position:relative;
+}
+
+.glitch::before,
+.glitch::after{
+    content:attr(data-text);
+    position:absolute;
+    left:0;
+    width:100%;
+    opacity:0.8;
+}
+
+.glitch::before{
+    color:red;
+    animation:glitch1 1s infinite;
+}
+
+.glitch::after{
+    color:cyan;
+    animation:glitch2 1.2s infinite;
+}
+
+@keyframes glitch1{
+    0%{transform:translate(0,0);}
+    20%{transform:translate(-2px,2px);}
+    40%{transform:translate(2px,-2px);}
+    100%{transform:translate(0,0);}
+}
+
+@keyframes glitch2{
+    0%{transform:translate(0,0);}
+    20%{transform:translate(2px,-2px);}
+    40%{transform:translate(-2px,2px);}
+    100%{transform:translate(0,0);}
+}
+
+.info{
+    margin-top:8px;
+    font-size:14px;
+    color:#bfffee;
+}
+
+.btn{
+    display:block;
+    margin-top:15px;
+    padding:10px;
+    border:1px solid #00ffcc;
+    color:#00ffcc;
+    text-decoration:none;
+    border-radius:6px;
+}
+
+.btn:hover{
+    background:#00ffcc;
+    color:black;
+}
+</style>
 </head>
+
 <body>
 
-    <div class="card">
-        <img src="profile.jpg" alt="Chenura" class="profile-img">
-        
-        <h1>Chenura Gajanayake</h1>
-        <p>Age: <span class="highlight">24</span></p>
-        <p>Status: <span class="highlight">Passionate about Cyber Security</span></p>
+<canvas id="matrix"></canvas>
 
-        <div class="btn-container">
-            <a href="https://www.linkedin.com/in/chenura-gajanayake-159a56395?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="btn">LinkedIn</a>
-            <a href="https://youtube.com/@shadowbeast8177?si=uUmjTkn_x0F7dMWb" target="_blank" class="btn">YouTube</a>
-        </div>
+<div class="card">
+    <img src="profile.jpg" alt="Chenura">
+
+    <div class="glitch" data-text="Chenura Gajanayake">
+        Chenura Gajanayake
     </div>
+
+    <div class="info">Age: 24</div>
+    <div class="info">passionate about Cyber Security</div>
+
+    <a class="btn" href="https://www.linkedin.com/in/chenura-gajanayake-159a56395?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</a>
+
+    <a class="btn" href="https://youtube.com/@shadowbeast8177?si=uUmjTkn_x0F7dMWb" target="_blank">YouTube</a>
+
+    <a class="btn" href="mailto:chenurag@gmail.com">Email</a>
+</div>
+
+<script>
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+const letters="01";
+const fontSize=14;
+const columns=canvas.width/fontSize;
+const drops=Array(Math.floor(columns)).fill(1);
+
+function draw(){
+    ctx.fillStyle="rgba(0,0,0,0.05)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle="#00ffcc";
+    ctx.font=fontSize+"px monospace";
+
+    for(let i=0;i<drops.length;i++){
+        const text=letters[Math.floor(Math.random()*letters.length)];
+        ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+        if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
+            drops[i]=0;
+        }
+        drops[i]++;
+    }
+}
+setInterval(draw,33);
+</script>
 
 </body>
 </html>
