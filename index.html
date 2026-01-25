@@ -134,6 +134,10 @@ canvas{
 </div>
 
 <script>
+    window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
 const canvas=document.getElementById("matrix");
 const ctx=canvas.getContext("2d");
 
