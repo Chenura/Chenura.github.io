@@ -5,37 +5,37 @@
     <div class="info">AGE: 24</div>
     <div class="info">CYBER SECURITY ENTHUSIAST</div>
 
-    <div class="btn-container">
-        <a class="btn" href="https://www.linkedin.com/in/chenura-gajanayake-159a56395" target="_blank">LINKEDIN</a>
-        <a class="btn" href="https://youtube.com/@shadowbeast8177" target="_blank">YOUTUBE</a>
-        <a class="btn" href="https://t.me/chenura" target="_blank">TELEGRAM</a>
-        <a class="btn" href="https://wa.me/94716343593" target="_blank">WHATSAPP</a>
-    </div>
+    <a class="btn" href="https://www.linkedin.com/in/chenura-gajanayake-159a56395" target="_blank">LinkedIn</a>
+    <a class="btn" href="https://youtube.com/@shadowbeast8177" target="_blank">YouTube</a>
+    <a class="btn" href="https://t.me/chenura" target="_blank">Telegram</a>
+    <a class="btn" href="https://wa.me/94716343593" target="_blank">WhatsApp</a>
 </div>
 
 <script>
     const canvas = document.getElementById("matrix");
     const ctx = canvas.getContext("2d");
 
-    let width, height, columns, drops;
+    let fontSize = 16;
+    let columns;
+    let drops;
 
-    function resize() {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-        const fontSize = 14;
-        columns = Math.floor(width / fontSize);
+    function setupCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        columns = Math.floor(canvas.width / fontSize);
         drops = Array(columns).fill(1);
     }
 
-    window.addEventListener('resize', resize);
-    resize();
+    // Call setup on start and when window resizes
+    setupCanvas();
+    window.addEventListener('resize', setupCanvas);
 
-    const letters = "01";
-    const fontSize = 14;
+    const letters = "010101010101";
 
     function draw() {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-        ctx.fillRect(0, 0, width, height);
+        ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
         ctx.fillStyle = "#00ffcc";
         ctx.font = fontSize + "px monospace";
 
@@ -43,14 +43,14 @@
             const text = letters[Math.floor(Math.random() * letters.length)];
             ctx.fillText(text, i * fontSize, drops[i] * fontSize);
             
-            if (drops[i] * fontSize > height && Math.random() > 0.975) {
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
                 drops[i] = 0;
             }
             drops[i]++;
         }
     }
 
-    setInterval(draw, 33);
+    setInterval(draw, 35);
 </script>
 
 </body>
