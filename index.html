@@ -1,115 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Chenura Gajanayake</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Share Tech Mono', monospace;
-}
-
-body{
-    background:black;
-    color:#00ffcc;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
-}
-
-canvas{
-    position:fixed;
-    top:0;
-    left:0;
-    z-index:-1;
-}
-
-.card{
-    background:rgba(0,0,0,0.85);
-    border:1px solid #00ffcc;
-    border-radius:12px;
-    padding:30px;
-    width:320px;
-    text-align:center;
-    box-shadow:0 0 25px #00ffcc;
-}
-
-.card img{
-    width:140px;
-    height:140px;
-    border-radius:50%;
-    border:3px solid #00ffcc;
-    object-fit:cover;
-    margin-bottom:20px;
-}
-
-/* GLITCH EFFECT */
-.glitch{
-    font-size:24px;
-    position:relative;
-}
-
-.glitch::before,
-.glitch::after{
-    content:attr(data-text);
-    position:absolute;
-    left:0;
-    width:100%;
-    opacity:0.8;
-}
-
-.glitch::before{
-    color:red;
-    animation:glitch1 1s infinite;
-}
-
-.glitch::after{
-    color:cyan;
-    animation:glitch2 1.2s infinite;
-}
-
-@keyframes glitch1{
-    0%{transform:translate(0,0);}
-    20%{transform:translate(-2px,2px);}
-    40%{transform:translate(2px,-2px);}
-    100%{transform:translate(0,0);}
-}
-
-@keyframes glitch2{
-    0%{transform:translate(0,0);}
-    20%{transform:translate(2px,-2px);}
-    40%{transform:translate(-2px,2px);}
-    100%{transform:translate(0,0);}
-}
-
-.info{
-    margin-top:8px;
-    font-size:14px;
-    color:#bfffee;
-}
-
-.btn{
-    display:block;
-    margin-top:15px;
-    padding:10px;
-    border:1px solid #00ffcc;
-    color:#00ffcc;
-    text-decoration:none;
-    border-radius:6px;
-}
-
-.btn:hover{
-    background:#00ffcc;
-    color:black;
-}
-</style>
+/* Tiny phone adjustments (e.g., iPhone SE) */
+        @media (max-height: 600px) {
+            .card { padding: 15px; }
+            .card img { width: 90px; height: 90px; margin-bottom: 10px; }
+            .btn { padding: 8px; margin-top: 8px; }
+        }
+    </style>
 </head>
 
 <body>
@@ -123,49 +18,55 @@ canvas{
         Chenura Gajanayake
     </div>
 
-    <div class="info">Age: 24</div>
-    <div class="info">passionate about Cyber Security</div>
+    <div class="info">AGE: 24</div>
+    <div class="info">CYBER SECURITY ENTHUSIAST</div>
 
-    <a class="btn" href="https://www.linkedin.com/in/chenura-gajanayake-159a56395?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</a>
-
-    <a class="btn" href="https://youtube.com/@shadowbeast8177?si=uUmjTkn_x0F7dMWb" target="_blank">YouTube</a>
-    <a class="btn" href="https://t.me/chenura" target="_blank" rel="noopener noreferrer">Telegram</a>
-    <a class="btn" href="https://wa.me/94716343593" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-
+    <div class="btn-container">
+        <a class="btn" href="https://www.linkedin.com/in/chenura-gajanayake-159a56395" target="_blank">LinkedIn</a>
+        <a class="btn" href="https://youtube.com/@shadowbeast8177" target="_blank">YouTube</a>
+        <a class="btn" href="https://t.me/chenura" target="_blank">Telegram</a>
+        <a class="btn" href="https://wa.me/94716343593" target="_blank">WhatsApp</a>
+    </div>
 </div>
 
 <script>
-    window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
-const canvas=document.getElementById("matrix");
-const ctx=canvas.getContext("2d");
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
 
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+    let width, height, columns, drops;
+    const fontSize = 16;
 
-const letters="01";
-const fontSize=14;
-const columns=canvas.width/fontSize;
-const drops=Array(Math.floor(columns)).fill(1);
-
-function draw(){
-    ctx.fillStyle="rgba(0,0,0,0.05)";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="#00ffcc";
-    ctx.font=fontSize+"px monospace";
-
-    for(let i=0;i<drops.length;i++){
-        const text=letters[Math.floor(Math.random()*letters.length)];
-        ctx.fillText(text,i*fontSize,drops[i]*fontSize);
-        if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
-            drops[i]=0;
-        }
-        drops[i]++;
+    function initMatrix() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        columns = Math.floor(width / fontSize);
+        drops = Array(columns).fill(1);
     }
-}
-setInterval(draw,33);
+
+    // Recalculate if user rotates their phone
+    window.addEventListener('resize', initMatrix);
+    initMatrix();
+
+    const letters = "010101";
+
+    function draw() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+        ctx.fillRect(0, 0, width, height);
+        ctx.fillStyle = "#00ffcc";
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = letters[Math.floor(Math.random() * letters.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            
+            if (drops[i] * fontSize > height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+
+    setInterval(draw, 35);
 </script>
 
 </body>
