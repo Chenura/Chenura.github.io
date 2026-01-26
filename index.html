@@ -1,8 +1,145 @@
-/* Tiny phone adjustments (e.g., iPhone SE) */
-        @media (max-height: 600px) {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Chenura Gajanayake</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Share Tech Mono', monospace;
+            /* Prevents text resizing on orientation change */
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            background: black;
+            color: #00ffcc;
+            /* Use min-height so content isn't cut off on short screens */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.85);
+            border: 1px solid #00ffcc;
+            border-radius: 12px;
+            padding: 25px;
+            /* Perfectly scales on mobile */
+            width: 100%;
+            max-width: 340px; 
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
+            backdrop-filter: blur(4px);
+        }
+
+        .card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #00ffcc;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .glitch {
+            font-size: 22px;
+            position: relative;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            opacity: 0.8;
+        }
+
+        .glitch::before {
+            color: #ff0055;
+            animation: glitch1 1.5s infinite;
+        }
+
+        .glitch::after {
+            color: #00e5ff;
+            animation: glitch2 1.5s infinite reverse;
+        }
+
+        @keyframes glitch1 {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -1px); }
+            60% { transform: translate(2px, 1px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        @keyframes glitch2 {
+            0% { transform: translate(0); }
+            20% { transform: translate(2px, -2px); }
+            40% { transform: translate(2px, 1px); }
+            60% { transform: translate(-2px, -1px); }
+            80% { transform: translate(-2px, 2px); }
+            100% { transform: translate(0); }
+        }
+
+        .info {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #bfffee;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-container {
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: block;
+            margin-top: 10px;
+            padding: 12px; /* Larger tap targets for fingers */
+            border: 1px solid #00ffcc;
+            color: #00ffcc;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: rgba(0, 255, 204, 0.05);
+        }
+
+        /* Hover for PC, Active for Mobile taps */
+        .btn:hover, .btn:active {
+            background: #00ffcc;
+            color: black;
+            box-shadow: 0 0 10px #00ffcc;
+        }
+/* Adjustment for very small phones or landscape mode */
+        @media (max-height: 580px) {
             .card { padding: 15px; }
-            .card img { width: 90px; height: 90px; margin-bottom: 10px; }
-            .btn { padding: 8px; margin-top: 8px; }
+            .card img { width: 80px; height: 80px; }
+            .btn { padding: 8px; margin-top: 5px; }
         }
     </style>
 </head>
@@ -36,16 +173,16 @@
     let width, height, columns, drops;
     const fontSize = 16;
 
-    function initMatrix() {
+    function resizeCanvas() {
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
         columns = Math.floor(width / fontSize);
+        // Re-initialize drops on resize to prevent visual bugs
         drops = Array(columns).fill(1);
     }
 
-    // Recalculate if user rotates their phone
-    window.addEventListener('resize', initMatrix);
-    initMatrix();
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
 
     const letters = "010101";
 
